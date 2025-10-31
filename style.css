@@ -1,0 +1,587 @@
+/* General Resets and Base Styles */
+html {
+    scroll-behavior: smooth;
+}
+* {
+    
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif; /* Using Poppins for a clean, modern look */
+}
+
+body {
+    background-color: #f0f8ff; /* Light background if the main content doesn't cover all */
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+not working class_header skip {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+   /*  background-color: rgb(91, 9, 9); Slightly transparent white for the header */
+    position: relative; /* To be above the main content's blur */
+    z-index: 10;
+    
+}     
+
+.logo a{
+    font-size: 24px;
+    font-weight: 700;
+    color: #007bff; /* Bright blue color for the logo */
+    text-decoration: none;
+    list-style: none;
+}
+
+/* This targets the main navigation bar container */
+
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+    align-items: center;
+    padding: 0px 0px;
+}
+
+
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+
+nav ul li a:hover{
+    color: #1915ed;
+    
+}
+
+.login-btn {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff; /* Primary blue button */
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* --- Main Content / Hero Section --- */
+
+main {
+    height: calc(100vh - 55px); /* Full viewport height minus header height */
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    
+    
+    background-image: url(img/pic.jpg); 
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+    background-size:cover;
+    padding-bottom: 10px;
+    
+    
+}
+
+/* Placeholder for the main illustration/background image with the blur effect */
+.hero-content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* This color is used to simulate the faint blue tint */
+    background: rgba(8, 9, 10, 0.514); 
+    z-index: 1;
+}
+
+/* The Illustration Placeholder is where the faded image sits */
+.illustration-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    /* The core styling to simulate the faded, illustrated people */
+    background-image: url('placeholder-illustration.png'); /* Replace with a path to a similar image */
+    background-size: cover;
+    background-position: center bottom;
+    opacity: 0.35; /* Fading the illustration */
+}
+
+/* Text and Buttons content */
+.text-buttons {
+    position: relative;
+    z-index: 5;
+    color: #333;
+    max-width: 50%;
+    padding-left: 20px;
+}
+
+h1 {
+    font-size: 50px;
+    font-weight: 700;
+    color: white; /* White text for the main heading */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+
+.animated-title, .tagline, .description {
+    overflow: hidden; /* hide overflow for smooth sliding */
+    display: inline-block;
+    transform: translateX(-100%);
+    animation: slideIn 0.8s ease-out forwards;
+}
+
+/* Slide from left to right */
+@keyframes slideIn {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+
+.tagline {
+    font-size: 18px;
+    font-weight: 400;
+    color: #f1f1f1;
+    margin-bottom: 15px;
+}
+
+.description {
+    font-size: 16px;
+    font-weight: 300;
+    color: #f1f1f1;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+.action-buttons a {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-right: 15px;
+    text-decoration: none;
+}
+
+.report-btn {
+    background-color: white;
+    color: #007bff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.report-btn:hover{
+    background-color: #007bff;
+    color: white;
+    transition: .5s ease;
+}
+
+.search-btn {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    box-shadow: inset 0 0 0 1px white; /* Faking a border */
+}
+
+.search-btn:hover{
+    background-color: #007bff;
+    color: white;
+    transition: .5s ease;
+}
+
+/* --- Circular Icon Element --- */
+
+.icon-circle {
+    position: absolute;
+    right: 15%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    /* Key effect: The blurred white circle */
+    background-color: rgba(255, 255, 255, 0.5); 
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3; /* Above the illustration but below the text if it overlaps */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.icon-circle i {
+    font-size: 50px;
+    color: rgba(0, 123, 255, 0.8); /* Faded blue icon */
+}
+
+
+
+
+/*----------------------------
+=======================================
+==============================================*/
+.form-container {
+  max-width: 700px;
+  background: white;
+  padding: 30px;
+  margin: 35px auto 305px auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+}
+
+.h1Records {
+  color: #003366;    
+  margin-top: 40px;  
+  text-align: center;
+}
+.h1fpr{
+    color: #003366;
+}
+
+.found_sections {
+  display: inline-block;          /* Makes the background wrap the text */
+  color: #10b1f1;               /* Yellow text */
+  background-color: rgb(251, 251, 251); /* Red background */
+  padding: 10px 35px;             /* Add space inside */
+  border-radius: 23px;            /* Rounded shape */
+  font-weight: 700;               /* Bold text */
+  font-size: 22px;                /* Slightly larger */
+  margin: 40px auto 25px auto; 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.171);
+}
+
+.missin_section {
+  display: inline-block;          /* Makes the background wrap the text */
+  color: #d00000;               /* Yellow text */
+  background-color: rgb(251, 251, 251); /* Red background */
+  padding: 10px 35px;             /* Add space inside */
+  border-radius: 23px;            /* Rounded shape */
+  font-weight: 700;               /* Bold text */
+  font-size: 22px;                /* Slightly larger */
+  margin: 40px auto 25px auto; 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.171);
+}
+
+p {
+  color: #333;
+}
+.copy {
+    color: #ececec;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-top: 15px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 5px;
+  background: #f4f9ff;
+}
+
+.row {
+  display: flex;
+  gap: 15px;
+}
+
+.row div {
+  flex: 1;
+}
+
+button {
+  background: #4a90e2;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #3578c9;
+}
+
+.records-container1 {
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;  
+  border: 2px solid rgba(99, 156, 225, 0.593);
+}
+
+.records-container2 {
+  max-width: 1200px;
+  margin: 40px auto;
+  text-align: center;  
+  border: 2px solid rgba(195, 39, 8, 0.625);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 8px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+transition: 0.5s ease;
+margin-bottom: 20px;
+
+opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out; 
+
+}
+
+.card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+/* Slight delay for each card */
+.card:nth-child(1) { transition-delay: 0.1s; }
+.card:nth-child(2) { transition-delay: 0.3s; }
+.card:nth-child(3) { transition-delay: 0.5s; }
+.card:nth-child(4) { transition-delay: 0.7s; }
+.card:nth-child(5) { transition-delay: 0.9s; }
+
+
+.card:hover {
+   transform: translateY(-6px); /* lift up */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.456);
+    transition: transform 0.5s ease, box-shadow 0.2s ease;
+
+  
+}
+
+
+
+
+.card img {
+  width: 100%;
+  height: 250px;          /* increase height for better visibility */
+  object-fit: contain;    /* shows full image without cropping */
+  background: #f0f0f0;    /* adds neutral background for letterbox areas */
+  border-radius: 6px;
+  display: block;         /* removes bottom whitespace */
+  margin: 0 auto;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+}
+
+.missing-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: #fa0000; /* Red color */
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 14px;
+  z-index: 2;
+}
+ .found-badge{
+    position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: #03bffd; /* Red color */
+  color: rgb(0, 0, 0);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 14px;
+  z-index: 2;
+ }
+
+
+
+.card a {
+  text-decoration: none;
+  color: inherit;           /* keep original text color */
+  display: block;           /* make entire card clickable */
+  height: 100%;             /* fill the card */
+}
+
+
+
+/* Truncate last paragraph (description) */
+.card p:last-child {
+  display: -webkit-box;        
+  -webkit-line-clamp: 2;        /* show ~2 lines (adjust as needed) */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+
+
+
+
+/*============= 3 number section -- Section Styling start ================*/
+
+
+
+/* Section Styling */
+.platform-help-section {
+    padding: 20px 20px;
+    max-width: 1200px; /* Max width to center the content */
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 70px;
+    
+   
+}
+
+/* Header Content Styling */
+.header-contentw {
+    margin-bottom: 60px;
+}
+
+.header-contentw h2 {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #1e3a8a; /* Dark blue similar to the image's heading */
+    margin-bottom: 15px;
+}
+
+.header-contentw p {
+    font-size: 1.1em;
+    font-weight: 400;
+    color: #666;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Benefits Container - Layout for Cards */
+.benefits-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px; /* Space between the cards */
+}
+
+/* Individual Benefit Card Styling */
+.benefit-card {
+    background-color: #ffffff; /* White background for the card */
+    padding: 40px 30px;
+    flex: 1; /* Allows the cards to take equal width */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Soft, subtle shadow */
+    text-align: left;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Optional hover effect */
+.benefit-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.456);
+}
+
+.benefit-card h3 {
+    font-size: 1.35em;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.benefit-card p {
+    font-size: 1em;
+    font-weight: 400;
+    color: #555;
+}
+
+/* Icon Box Styling */
+.icon-box {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e0f2ff; /* Very light blue background for the icon box */
+    border: 1px solid #cceeff; /* Light blue border */
+    color: #3b82f6; /* Medium blue icon color */
+    font-size: 1.2em;
+}
+
+/* Specific icon colors (optional if the original image has slight variations) */
+.icon-box.heart {
+    background-color: #f7e0e0; /* Slightly different background for the heart */
+    border-color: #f0c0c0;
+    color: #ef4444; /* Red icon for heart/families */
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .benefits-container {
+        flex-wrap: wrap; /* Stack cards on smaller screens */
+        justify-content: center;
+    }
+
+    .benefit-card {
+        max-width: 45%; /* Two cards per row */
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .platform-help-section {
+        padding: 50px 15px;
+    }
+    
+    .header-content h2 {
+        font-size: 2em;
+    }
+
+    .benefit-card {
+        max-width: 100%; /* One card per row on mobile */
+    }
+}
+
+/*============= 3 number section End================*/
+
