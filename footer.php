@@ -23,6 +23,8 @@
             </p>
         </div>
 
+        
+
         <div style="flex: 1; min-width: 200px;">
             <h3 style="color:#fff; margin-bottom:15px;">Quick Links</h3>
             <ul style="list-style:none; padding:0; margin:0;">
@@ -50,7 +52,10 @@
         font-size:14px;
         color:#dcdcdc;
     ">
+
+        
         <p class="copy">&copy; <?php echo date('Y'); ?> Lost  & Identity Person Records Database | Developed by  
         <a href="about/index.html#met" style="padding: 3px 4px ;  border-radius: 2px; background-color: #f8f8f8ff; : #007bff; text-decoration: none;">Team X</a> </p>
     </div>
 </footer>
+
